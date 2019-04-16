@@ -13,10 +13,10 @@ public class Perceptron
 	{
 		for(int i=0;i<inputs;i++)
 		{
-			this.inputs.add(new Double(1.0));
-			this.weights.add(new Double(1.0));
+			this.inputs.add(new Double(0.0));
+			this.weights.add(new Double(0.1));
 		}
-		bias=new Double(Math.random());
+		bias=new Double(0.0);
 	}
 	
 	public void uptdate(ArrayList<Double> inputs)

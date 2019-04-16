@@ -3,17 +3,13 @@ package thomas.hofmann;
 import java.util.ArrayList;
 
 public class NeuralNetwork
-{
+{	
 	public ArrayList<Layer> layer = new ArrayList<Layer>();
-	int inputs;
-	public NeuralNetwork()
-	{
-		
-	}
+	int inputNodes;
 	
 	public void addInputLayer(int nodes)
 	{
-		inputs=nodes;
+		inputNodes=nodes;
 		layer.add(new Layer(nodes, 1));
 	}
 	
@@ -33,9 +29,9 @@ public class NeuralNetwork
 	
 	public ArrayList<Double> compute(ArrayList<Double> input)
 	{
-		InputArray inputArr = new InputArray(this.inputs, 1);
+		InputArray inputArr = new InputArray(this.inputNodes, 1);
 		ArrayList<Double> latestOutput= new ArrayList<Double>();
-		for(int i=0;i<this.inputs;i++)
+		for(int i=0;i<this.inputNodes;i++)
 		{
 			inputArr.add(InputArray.getInput(new double[] {input.get(i)}));
 		}
