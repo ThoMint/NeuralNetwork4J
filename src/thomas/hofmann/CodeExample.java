@@ -30,8 +30,8 @@ public class CodeExample
 		System.out.println(output);
 		
 		//Changing Parameters of the NN (NN is fully transparent)
-		
-		//Changing the weight of the input-node to 0.5
+		//Every Component accesable via ArrayLists
+		//Changing the weight of the input-node to 0.9
 		nn.layer.get(0).pcts.get(0).weights.set(0, 0.9);
 	}
 }
