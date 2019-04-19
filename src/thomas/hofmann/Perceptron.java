@@ -4,57 +4,60 @@ import java.util.ArrayList;
 
 public class Perceptron
 {
-	Double bias;
+	public Double bias;
+	public ArrayList<Double> inputs = new ArrayList<Double>();
+	public ArrayList<Double> weights = new ArrayList<Double>();
 	
-	ArrayList<Double> inputs = new ArrayList<Double>();
-	ArrayList<Double> weights = new ArrayList<Double>();
-	
+	//Constructor takes the number of Inputs for the Perceptron and initializes all weights and the bias
 	public Perceptron(int inputs)
 	{
 		for(int i=0;i<inputs;i++)
 		{
-			this.inputs.add(new Double(0.0));
-			this.weights.add(new Double(0.1));
+			this.weights.add(new Double(1.0));
 		}
 		bias=new Double(0.0);
 	}
 	
+	//Takes the input and stores it inside of the Perceptron so multiple calculations
+	//can be done without passing the input every time
 	public void uptdate(ArrayList<Double> inputs)
 	{
 		this.inputs=inputs;
 	}
 	
+	//Calculates the weighted sum of all inputs
 	public double sum()
 	{
 		Double sum=0.0;
+		//Iterates over every input and adds the weighted sum of it to the overall sum
 		for(int i=0;i<this.inputs.size();i++)
 		{
-			sum+=this.inputs.get(i).doubleValue()*this.weights.get(i).doubleValue();
+			sum+=this.inputs.get(i)*this.weights.get(i);
 		}
 		return sum+bias;
 	}
-	
+
+	//'Sigmoid' activation function
 	public double sigmoid()
 	{
 		return (1/(1+Math.exp(-sum())));
 	}
 	
-	public void optimize(Double bias,ArrayList<Double> weights)
+	//'TanH' activation function
+	public double tanh()
 	{
-		if(bias!=null)
-		{
-			this.bias=bias;
-		}
-		if(weights!=null)
-		{
-			for(int i=0;i<this.weights.size();i++)
-			{
-				if(weights.get(i)!=null)
-				{
-					this.weights.set(i, weights.get(i));
-				}
-			}
-		}
+		return ( 2 / ( 1 + Math.exp( -2 * sum() ) ) )-1;
 	}
 	
+	//'ReLu' activation function
+	public double relu()
+	{
+		if(sum()>=0)
+		{
+			return sum();
+		}else
+		{
+			return 0.0;
+		}
+	}
 }

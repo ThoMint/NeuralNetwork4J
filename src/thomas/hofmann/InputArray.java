@@ -3,27 +3,23 @@ package thomas.hofmann;
 import java.util.ArrayList;
 
 @SuppressWarnings("serial")
+//Holds the input for one Layer
 public class InputArray extends ArrayList<ArrayList<Double>>
 {
-	int nodes,inputsPerNode;
-	
-	public InputArray(int nodes, int inputsPerNode)
+	//Constructor from Superclass
+	public InputArray()
 	{
 		super();
-		this.nodes=nodes;
-		this.inputsPerNode=inputsPerNode;
 	}
 	
-	
-	public static ArrayList<Double> getInput(double[] inputs)
+	//Converting a single ArrayList into a nested ArrayList (input-data-type used by the 'Layer' class)
+	public void addList(ArrayList<Double> inputs)
 	{
-		ArrayList<Double> temp=new ArrayList<Double>();
-		for(double currentValue : inputs)
+		for(Double d : inputs)
 		{
-			temp.add(currentValue);
+			ArrayList<Double> temp = new ArrayList<Double>();
+			temp.add(d);
+			this.add(temp);
 		}
-		return temp;
 	}
-	
-	
 }
