@@ -1,8 +1,5 @@
 package thomas.hofmann;
 
-public enum ActFunctions
-{
-	SIGMOID,
-	TANH,
-	RELU
+public enum ActFunctions {
+	SIGMOID, TANH, RELU
 }
